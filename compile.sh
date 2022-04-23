@@ -1,5 +1,5 @@
 pip-compile \
-    requirements.in \
+    --allow-unsafe \
     --generate-hashes \
+    requirements.in \
     --output-file=requirements.txt
-
