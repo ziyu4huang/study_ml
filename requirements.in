@@ -44,6 +44,16 @@ ray[default,data,rllib,tune,serve]
 pyarrow
 dask
 ipython
+
+jupyter
+notebook
+jupyterlab
+
+ipywidgets         
+jupyter_console    
+jupyterlab_widgets 
+prompt_toolkit     
+widgetsnbextension 
 # END == requirements.in =======
 
 # STEP #7 install requirements.txt generate from last step

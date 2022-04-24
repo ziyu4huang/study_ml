@@ -30,13 +30,6 @@ rm https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-
 conda create --name ray python=3.9; conda activate ray
 
 conda install -c apple tensorflow-deps -y
-conda install -c conda-forge jupyterlab
-conda install -c conda-forge ipywidgets         
-conda install -c conda-forge jupyter            
-conda install -c conda-forge jupyter_console    
-conda install -c conda-forge jupyterlab_widgets 
-conda install -c conda-forge prompt_toolkit     
-conda install -c conda-forge widgetsnbextension 
 
 ```
 
@@ -68,8 +61,16 @@ tensorboard
 ray[default,data,rllib,tune,serve]
 pyarrow
 dask
+
 jupyter
 notebook
+jupyterlab
+
+ipywidgets         
+jupyter_console    
+jupyterlab_widgets 
+prompt_toolkit     
+widgetsnbextension 
 ```
 jupter notebooks seems necessary for VS Code's jupter works 
 install on `conda` seems not works.
