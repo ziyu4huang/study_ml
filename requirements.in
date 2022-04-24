@@ -43,6 +43,7 @@ tensorboard
 ray[default,data,rllib,tune,serve]
 pyarrow
 dask
+ipython
 # END == requirements.in =======
 
 # STEP #7 install requirements.txt generate from last step

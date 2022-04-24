@@ -28,8 +28,16 @@ rm https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-
 
 ```shell
 conda create --name ray python=3.9; conda activate ray
+
 conda install -c apple tensorflow-deps -y
 conda install -c conda-forge jupyterlab
+conda install -c conda-forge ipywidgets         
+conda install -c conda-forge jupyter            
+conda install -c conda-forge jupyter_console    
+conda install -c conda-forge jupyterlab_widgets 
+conda install -c conda-forge prompt_toolkit     
+conda install -c conda-forge widgetsnbextension 
+
 ```
 
 ![tf macos](https://betterdatascience.com/content/images/size/w1000/2021/12/6-min.png)
@@ -53,13 +61,18 @@ pip-compile \
 > ===== requirements.in =======
 ```in
 setuptools
+keras
 tensorflow-macos
 tensorflow-metal
 tensorboard
 ray[default,data,rllib,tune,serve]
 pyarrow
 dask
+jupyter
+notebook
 ```
+jupter notebooks seems necessary for VS Code's jupter works 
+install on `conda` seems not works.
 
 ## STEP #7 install requirements.txt generate from last step
 
@@ -67,6 +80,21 @@ dask
 
 ## STEP #8 step special for grpcio hack
 > pip uninstall grpcio; conda install grpcio  --force-reinstall
+
+# More package required in conda install after use VSCode
+ at  4/23, runs ipython on VScode directly has missing package 
+ warnning from VScode. 
+
+```
+The following NEW packages will be INSTALLED:
+
+  ipywidgets         conda-forge/noarch::ipywidgets-7.7.0-pyhd8ed1ab_0
+  jupyter            conda-forge/osx-arm64::jupyter-1.0.0-py39h2804cbe_7
+  jupyter_console    conda-forge/noarch::jupyter_console-6.4.3-pyhd8ed1ab_0
+  jupyterlab_widgets conda-forge/noarch::jupyterlab_widgets-1.1.0-pyhd8ed1ab_0
+  prompt_toolkit     conda-forge/noarch::prompt_toolkit-3.0.29-hd8ed1ab_0
+  widgetsnbextension conda-forge/osx-arm64::widgetsnbextension-3.6.0-py39h2804cbe_0
+```
 
 # CONFIG git 
 

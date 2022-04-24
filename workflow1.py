@@ -2,6 +2,7 @@ import json
 
 import ray
 from ray import workflow
+from tensorflow.keras import *
 
 @workflow.step
 def extract() -> dict:
