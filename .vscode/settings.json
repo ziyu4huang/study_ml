@@ -1,5 +1,5 @@
 {
-    "python.defaultInterpreterPath": "/Users/ziyu4huang/miniforge3/envs/ray/bin/python",
+    "python.defaultInterpreterPath": "/Users/ziyu4huang/miniforge3/envs/tf28/bin/python",
     "python.linting.pylintArgs": [
         "--ignored-modules=tensorflow.keras"
     ],
