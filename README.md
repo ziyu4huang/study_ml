@@ -42,7 +42,7 @@ conda install -c apple tensorflow-deps -y
 ## STEP_#6 generate via pip-compile
 
 Install Ray as you normally would. using requirement.txt 
-> ==== compile.sh ================
+> [pip-compile --> compile.sh ](compile.sh)
 ```bash 
 pip-compile \
     --allow-unsafe \
@@ -51,26 +51,13 @@ pip-compile \
     --output-file=requirements.txt
 
 ```
-> ===== requirements.in =======
+> [Check file for pip-compile : requirements.in](requirements.in)
 ```in
-setuptools
-keras
 tensorflow-macos
 tensorflow-metal
 tensorboard
 ray[default,data,rllib,tune,serve]
-pyarrow
-dask
-
-jupyter
-notebook
-jupyterlab
-
-ipywidgets         
-jupyter_console    
-jupyterlab_widgets 
-prompt_toolkit     
-widgetsnbextension 
+### see real requrements.in for detail
 ```
 jupter notebooks seems necessary for VS Code's jupter works 
 install on `conda` seems not works.
