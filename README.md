@@ -156,6 +156,24 @@ Epoch 1/10
 
 ```
 
+Try Tensorflow Probility (Optional)
+
+```
+(tf28) ziyu4huang@Ziyu-MBA-M1 study_ml % python try_tf_probability.py 
+Metal device set to: Apple M1
+
+systemMemory: 8.00 GB
+maxCacheSize: 2.67 GB
+
+2022-04-24 18:57:08.498511: I tensorflow/core/common_runtime/pluggable_device/pluggable_device_factory.cc:305] Could not identify NUMA node of platform GPU ID 0, defaulting to 0. Your kernel may not have been built with NUMA support.
+2022-04-24 18:57:08.498619: I tensorflow/core/common_runtime/pluggable_device/pluggable_device_factory.cc:271] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 0 MB memory) -> physical PluggableDevice (device: 0, name: METAL, pci bus id: <undefined>)
+results (<tf.Tensor: shape=(1,), dtype=float32, numpy=array([1.6406208], dtype=float32)>, <tf.Tensor: shape=(100000,), dtype=float32, numpy=
+array([ 0.94913507, -0.06321114,  0.76776785, ...,  0.4874738 ,
+        0.39296442, -0.21156944], dtype=float32)>, <tf.Tensor: shape=(), dtype=bool, numpy=True>, <tf.Tensor: shape=(), dtype=int32, numpy=5>)
+(tf28) ziyu4huang@Ziyu-MBA-M1 study_ml % 
+
+```
+
 
 ------
 

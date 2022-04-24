@@ -1,7 +1,12 @@
+autopep8
+ipykernel
+# for ipython kernel
+seaborn
+# for jupyter lab
 tensorflow-macos
 tensorflow-metal
 tensorboard
+tensorflow-probability
 ray[default,data,rllib,tune,serve]
 pyarrow
 dask
-autopep8
