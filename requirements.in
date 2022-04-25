@@ -10,3 +10,4 @@ tensorflow-probability
 ray[default,data,rllib,tune,serve]
 pyarrow
 dask
+jupyterlab
