@@ -1,0 +1,19 @@
+tensorflow==2.8
+matplotlib
+jupyterlab
+autopep8
+ipykernel
+# for ipython kernel
+seaborn
+# for jupyter lab
+tensorboard
+tensorflow-probability
+ray[default,data,rllib,tune,serve]
+pyarrow
+pandas==1.3.5
+dask==2022.2.0
+numpy==1.21.6
+ipython==7.32.0
+scipy==1.7.3
+tifffile==2021.11.2
+networkx==2.6.3
