@@ -82,7 +82,7 @@ pip install tensorflow-metal (compbine to pip-compile)
 
 ##  6. <a name='STEP_6generateviapip-compile'></a>STEP_6 generate via pip-compile
 Install pip-tools first
-> pip isntall pip-tools
+> pip install pip-tools
 
 Install Ray as you normally would. using requirement.txt 
 > [pip-compile --> compile.sh ](compile.sh)
@@ -115,7 +115,14 @@ Install generated via `pip-sync`
 > pip uninstall grpcio; conda install grpcio  --force-reinstall
 
 If there is any problem , just purge pip via 
-> pip chache purge
+> pip cache purge
+
+Clean unuse data avoid effect later
+```
+conda env remove -n <NAME>
+pip cache purge
+conda clean -all
+```
 
 # Test 
 
@@ -177,7 +184,22 @@ array([ 0.94913507, -0.06321114,  0.76776785, ...,  0.4874738 ,
 
 ------
 
-# CONFIG git 
+# Setting Github
+
+[Github push using SSL](https://gist.github.com/xirixiz/b6b0c6f4917ce17a90e00f9b60566278)
+
+Test Git SSL mode
+```
+ssh -T git@github.com
+```
+
+setting to Git SSL mode
+
+```
+git remote set-url origin git@github.com:ziyu4huang/study_ml.git
+```
+
+# local .git setting push using SSL Key
 
 ```ini
 [core]
