@@ -21,6 +21,8 @@ aiosignal==1.2.0
     # via
     #   aiohttp
     #   ray
+ale-py==0.7.5
+    # via gym
 anyio==3.5.0
     # via
     #   jupyter-server
@@ -39,6 +41,8 @@ async-timeout==4.0.2
     # via aiohttp
 asynctest==0.13.0
     # via aiohttp
+atari-py==0.2.9
+    # via -r requirements.in
 attrs==21.4.0
     # via
     #   aiohttp
@@ -46,6 +50,10 @@ attrs==21.4.0
     #   ray
 autopep8==1.6.0
     # via -r requirements.in
+autorom[accept-rom-license]==0.4.2
+    # via gym
+autorom-accept-rom-license==0.4.2
+    # via autorom
 babel==2.10.1
     # via jupyterlab-server
 backcall==0.2.0
@@ -70,6 +78,8 @@ charset-normalizer==2.0.12
     #   requests
 click==8.1.2
     # via
+    #   autorom
+    #   autorom-accept-rom-license
     #   ray
     #   uvicorn
 cloudpickle==2.0.0
@@ -146,8 +156,10 @@ grpcio==1.43.0
     #   ray
     #   tensorboard
     #   tensorflow
-gym==0.21.0
-    # via ray
+gym[accept-rom-license,atari]==0.21.0
+    # via
+    #   -r requirements.in
+    #   ray
 h11==0.13.0
     # via uvicorn
 h5py==3.6.0
@@ -161,6 +173,7 @@ imageio==2.18.0
     # via scikit-image
 importlib-metadata==4.11.3
     # via
+    #   ale-py
     #   click
     #   gym
     #   jsonschema
@@ -168,7 +181,11 @@ importlib-metadata==4.11.3
     #   markdown
     #   virtualenv
 importlib-resources==5.7.1
-    # via jsonschema
+    # via
+    #   ale-py
+    #   autorom
+    #   autorom-accept-rom-license
+    #   jsonschema
 ipykernel==6.13.0
     # via
     #   -r requirements.in
@@ -288,6 +305,8 @@ notebook-shim==0.1.0
 numpy==1.21.6
     # via
     #   -r requirements.in
+    #   ale-py
+    #   atari-py
     #   gym
     #   h5py
     #   imageio
@@ -423,6 +442,8 @@ ray[data,default,rllib,serve,tune]==1.12.0
     # via -r requirements.in
 requests==2.27.1
     # via
+    #   autorom
+    #   autorom-accept-rom-license
     #   google-api-core
     #   jupyterlab-server
     #   ray
@@ -450,6 +471,7 @@ six==1.16.0
     # via
     #   absl-py
     #   astunparse
+    #   atari-py
     #   bleach
     #   blessed
     #   google-auth
@@ -518,6 +540,10 @@ tornado==6.1
     #   jupyterlab
     #   notebook
     #   terminado
+tqdm==4.64.0
+    # via
+    #   autorom
+    #   autorom-accept-rom-license
 traitlets==5.1.1
     # via
     #   ipykernel
