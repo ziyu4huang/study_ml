@@ -38,6 +38,7 @@ trainer = PPOTrainer(config=config)
 # loss calculation on the collected batch and a model update.
 for _ in range(3):
     # this will crash in TF2.8 / Python 3.7.13 / Ubuntu[CPU]
+    # this will OK in TF1.15 / Python 3.7.13 / Ubuntu[GPU/DirectML]
     # but it's pretty ok in MacBook Air M1 Setup / with TF2.8/ Python 3.9.5 /MacOS 12.3.1[GPU]
     print(trainer.train())
 

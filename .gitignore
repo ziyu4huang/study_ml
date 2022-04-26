@@ -1,4 +1,5 @@
 .ipynb_checkpoints
+*.swp
 *.pyo
 *.pyc
 *.log

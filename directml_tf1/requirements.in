@@ -1,0 +1,15 @@
+tensorflow-directml
+matplotlib
+jupyterlab
+autopep8
+ipykernel
+seaborn
+tensorboard
+ray[default,rllib,tune,serve]
+# cannot ray[data] due to conflict numpy > 1.20
+gym[atari]
+gym[accept-rom-license]
+atari_py
+pyarrow
+dask
+numpy==1.18.5
