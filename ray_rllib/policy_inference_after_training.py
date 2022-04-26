@@ -4,6 +4,17 @@ Example showing how you can use your trained policy for inference
 
 Includes options for LSTM-based models (--use-lstm), attention-net models
 (--use-attention), and plain (non-recurrent) models.
+
+This is from [Github permlink](https://github.com/ray-project/ray/blob/bb4e5cb70a53a50654211136e5bff26dfdfc25a7/rllib/examples/inference_and_serving/policy_inference_after_training.py)
+
+
+Run this on M1: with option --- 
+I gave up, I can't make this run using M1 GPU
+export RLLIB_NUM_GPUS=6
+  -num-gpus 6
+   
+This take very long to run Mac M1:
+  about : 
 """
 import argparse
 import gym
@@ -18,10 +29,11 @@ parser.add_argument(
     "--run", type=str, default="PPO", help="The RLlib-registered algorithm to use."
 )
 parser.add_argument("--num-cpus", type=int, default=0)
+parser.add_argument("--num-gpus", type=int, default=0)
 parser.add_argument(
     "--framework",
     choices=["tf", "tf2", "tfe", "torch"],
-    default="tf",
+    default="tf2",
     help="The DL framework specifier.",
 )
 parser.add_argument("--eager-tracing", action="store_true")
@@ -64,7 +76,8 @@ if __name__ == "__main__":
     config = {
         "env": "FrozenLake-v1",
         # Use GPUs iff `RLLIB_NUM_GPUS` env var set to > 0.
-        "num_gpus": int(os.environ.get("RLLIB_NUM_GPUS", "0")),
+        #"num_gpus": int(os.environ.get("RLLIB_NUM_GPUS", "0")),
+        "num_gpus": args.num_gpus,
         "framework": args.framework,
         # Run with tracing enabled for tfe/tf2?
         "eager_tracing": args.eager_tracing,

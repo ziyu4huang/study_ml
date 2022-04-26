@@ -8,6 +8,9 @@ tensorflow-metal
 tensorboard
 tensorflow-probability
 ray[default,data,rllib,tune,serve]
+gym[atari]
+gym[accept-rom-license]
+atari_py
 pyarrow
 dask
 jupyterlab
