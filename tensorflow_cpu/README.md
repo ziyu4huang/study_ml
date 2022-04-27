@@ -1,5 +1,7 @@
 # Setup Tensorflow 2.8 on CPU mode and Python 3.7
+
 This is for special project setting purpurse.
+DON'T use this , it's not for Mac M1.
 
 No conda, pure python interpreter. Make it more flexible to 
 deploy to enviroments inside firewall .

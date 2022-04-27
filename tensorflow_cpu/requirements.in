@@ -9,6 +9,9 @@ seaborn
 tensorboard
 tensorflow-probability
 ray[default,data,rllib,tune,serve]
+gym[atari]
+gym[accept-rom-license]
+atari_py
 pyarrow
 pandas==1.3.5
 dask==2022.2.0
