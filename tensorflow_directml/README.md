@@ -1,3 +1,16 @@
+# Recently Study on this 
+
+Try run Ray on WSL2/GPU_directml  (Ubuntu 20)
+
+Try Cluster run
+* start ray head via [bash script](start_ray.sh), with dashboard remote access
+* try connect to above ray cluster (head) , using notebook in VSCode [See](notebook/hello.ipynb)
+
+TODO: next
+
+* Try ray up/exec to [connect cluster, exec inside cluster](https://docs.ray.io/en/releases-1.2.0/cluster/commands.html#launching-a-cluster-ray-up)
+* try ray submit to exec script in cluster.
+
 # Setup Tensorflow 1.15 on GPU/Directml mode and Python 3.7
 This is for special project setting purpurse.
 
