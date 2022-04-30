@@ -2,6 +2,10 @@
 
 # Keras Cifar10 Example
 
+# fast run on M1/Mac 
+# (run pid=29096) 2022-04-30 20:59:32,876 INFO tune.py:701 -- Total run time: 110.30 seconds (109.92 seconds for the tuning loop).
+# Best hyperparameters found were:  {'epochs': 1, 'batch_size': 64, 'lr': 0.0001, 'decay': 1e-06, 'dropout': 0.25}
+
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """Train keras CNN on the CIFAR10 small images dataset.
@@ -216,6 +220,11 @@ if __name__ == "__main__":
         type=str,
         default=10001,
     )
+    parser.add_argument(
+        "--training-iteration",
+        type=int,
+        default=3,
+    )
     args, _ = parser.parse_known_args()
 
     if True:
@@ -249,7 +258,8 @@ if __name__ == "__main__":
         resources_per_trial={"cpu": cpu, "gpu": gpu},
         stop={
             "mean_accuracy": 0.80,
-            "training_iteration": 30,
+            #"training_iteration": 30,
+            "training_iteration": args.training_iteration,
         },
         config=space,
         num_samples=2,

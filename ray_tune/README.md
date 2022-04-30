@@ -15,7 +15,7 @@ I wrap it to a local python file
 ```
 
 
-# Tune Result 
+# Tune Result  on tensorflow cases
 
 Still not works correctly under WSL (no metter CPU or GPU )
 
@@ -57,3 +57,29 @@ Best hyperparameters found were:  {'threads': 2, 'lr': 0.0923391580993009, 'mome
 ```
 
 ##  ex2  -- on CPU mode  -- ray_tune_example_tf_ex2.py
+
+just iterate 3 times
+
+
+```
+2022-04-30 21:28:41,408 INFO tune.py:701 -- Total run time: 1478.76 seconds (1478.46 seconds for the tuning loop).
+
+```
+
+
+##  ex3  -- M1/GPU -- ray_tune_example_tf_ex3.py
+
+finish in M1/mac , iteration reduce to 5
+```
+Best hyperparameters found were:  {'hiddens': 64}
+(run pid=28860) 2022-04-30 20:24:08,101 INFO tune.py:701 -- Total run time: 38.15 seconds (37.92 seconds for the tuning loop).
+```
+
+##  ex4  -- M1/GPU -- ray_tune_example_tf_ex4.py
+
+Iteration reduce to 3
+
+```
+(run pid=29096) 2022-04-30 20:59:32,876 INFO tune.py:701 -- Total run time: 110.30 seconds (109.92 seconds for the tuning loop).
+Best hyperparameters found were:  {'epochs': 1, 'batch_size': 64, 'lr': 0.0001, 'decay': 1e-06, 'dropout': 0.25}
+```

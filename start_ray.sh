@@ -28,6 +28,8 @@ if [[ "$OSTYPE" == "linux"* ]]; then
   gpus=1
 fi
 
+echo "--num-cpus $cpus --num-gpus $gpus "
+
 ray start --head --port 6379 \
      --node-ip-address $ip \
      --num-cpus $cpus --num-gpus $gpus \

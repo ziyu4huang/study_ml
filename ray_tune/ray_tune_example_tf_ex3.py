@@ -11,6 +11,12 @@
 # this is to `import tensorflow` inside the Tune Trainable.
 #
 
+
+# finish in M1/mac 
+# Best hyperparameters found were:  {'hiddens': 64}
+# (run pid=28860) 2022-04-30 20:24:08,101 INFO tune.py:701 -- Total run time: 38.15 seconds (37.92 seconds for the tuning loop).
+
+
 import argparse
 import os
 
@@ -149,6 +155,11 @@ if __name__ == "__main__":
         type=str,
         default=10001,
     )
+    parser.add_argument(
+        "--training-iteration",
+        type=int,
+        default=5,
+    )
     args, _ = parser.parse_known_args()
 
     if args.server_address and not args.smoke_test:
@@ -160,7 +171,7 @@ if __name__ == "__main__":
         MNISTTrainable,
         metric="test_loss",
         mode="min",
-        stop={"training_iteration": 5 if args.smoke_test else 50},
+        stop={"training_iteration": 2 if args.smoke_test else args.training_iteration},
         verbose=1,
         # control in advance
         resources_per_trial={"cpu": cpu, "gpu": gpu},

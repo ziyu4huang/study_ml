@@ -301,6 +301,11 @@ if __name__ == "__main__":
         required=False,
         help="The address of server to connect to if using Ray Client.",
     )
+    parser.add_argument(
+        "--training-iteration",
+        type=int,
+        default=5,
+    )
     args, _ = parser.parse_known_args()
 
     if args.smoke_test:
@@ -326,7 +331,7 @@ if __name__ == "__main__":
         scheduler=pbt,
         metric="mean_accuracy",
         mode="max",
-        stop={"training_iteration": 4 if args.smoke_test else 100},
+        stop={"training_iteration": 2 if args.smoke_test else args.training_iteration},
         num_samples=4,
         resources_per_trial={"cpu": cpu, "gpu": gpu},
         config={
