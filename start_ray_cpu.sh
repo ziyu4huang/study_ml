@@ -8,7 +8,7 @@
 # --address 0.0.0.0 # not used after 1.12.0 , now redis is not ncessary
 
 ray start --head --port 6379 \
-     --num-cpus 6 --num-gpus 1 \
+     --num-cpus 8 --num-gpus 0 \
      --include-dashboard true --dashboard-host 0.0.0.0 --dashboard-port 8265 \
      --block
 ##     --autoscaling-config  tune-default.yaml \

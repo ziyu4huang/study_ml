@@ -57,3 +57,10 @@ An error will be raised if this is not the case.
 Ray client logs can be found at /tmp/ray/session_latest/logs on the head node.
 
 
+
+# Ray Job Submission Architecture
+
+The following diagram shows the underlying structure and steps for each submitted job.
+![Image ARchi](https://raw.githubusercontent.com/ray-project/images/master/docs/job/job_submission_arch_v2.png)
+
+

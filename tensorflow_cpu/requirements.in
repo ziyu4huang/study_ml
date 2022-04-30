@@ -3,9 +3,7 @@ matplotlib
 jupyterlab
 autopep8
 ipykernel
-# for ipython kernel
 seaborn
-# for jupyter lab
 tensorboard
 tensorflow-probability
 ray[default,data,rllib,tune,serve]
