@@ -271,6 +271,8 @@ class MemNNModel(tune.Trainable):
 if __name__ == "__main__":
     import ray
     from ray.tune.schedulers import PopulationBasedTraining
+    import platform_util
+    ipv4, gpu, cpu = platform_util.check_platform()
 
 
     parser = argparse.ArgumentParser()
@@ -278,11 +280,20 @@ if __name__ == "__main__":
         "--smoke-test", action="store_true", help="Finish quickly for testing"
     )
     parser.add_argument(
+        "--gpu",
+        type=int,
+        default=gpu,
+    )
+    parser.add_argument(
+        "--cpu",
+        type=int,
+        default=cpu,
+    )
+    parser.add_argument(
         "--server-port",
         type=str,
         default=10001,
     )
-    ipv4 = os.popen('ip addr show eth0').read().split("inet ")[1].split("/")[0]
     parser.add_argument(
         "--server-address",
         type=str,
@@ -316,10 +327,8 @@ if __name__ == "__main__":
         metric="mean_accuracy",
         mode="max",
         stop={"training_iteration": 4 if args.smoke_test else 100},
-        #num_samples=2,
-        num_samples=1,
-        # resources_per_trial={"cpu": 2, "gpu": 0},
-        resources_per_trial={"cpu": 0, "gpu": 1},
+        num_samples=4,
+        resources_per_trial={"cpu": cpu, "gpu": gpu},
         config={
             "finish_fast": args.smoke_test,
             "batch_size": 32,

@@ -49,7 +49,7 @@ def train_mnist(config):
     )
 
 
-def tune_mnist(num_training_iterations):
+def tune_mnist(num_training_iterations, gpu=0):
     sched = AsyncHyperBandScheduler(
         time_attr="training_iteration", max_t=400, grace_period=20
     )
@@ -62,7 +62,7 @@ def tune_mnist(num_training_iterations):
         mode="max",
         stop={"mean_accuracy": 0.99, "training_iteration": num_training_iterations},
         num_samples=10,
-        resources_per_trial={"cpu": 8, "gpu": 0},
+        resources_per_trial={"cpu": 4, "gpu": gpu},
         config={
             "threads": 2,
             "lr": tune.uniform(0.001, 0.1),
@@ -75,7 +75,8 @@ def tune_mnist(num_training_iterations):
 
 if __name__ == "__main__":
 
-    ipv4 = os.popen('ip addr show eth0').read().split("inet ")[1].split("/")[0]
+    import platform_util
+    ipv4, gpu, cpu = platform_util.check_platform()
 
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -85,6 +86,11 @@ if __name__ == "__main__":
         "--server-port",
         type=str,
         default=10001,
+    ),
+    parser.add_argument(
+        "--gpu",
+        type=int,
+        default=gpu,
     ),
     parser.add_argument(
         "--server-address",
@@ -101,7 +107,7 @@ if __name__ == "__main__":
         print("Connect to url: ", url)
         ray.init(url)
 
-    tune_mnist(num_training_iterations=5 if args.smoke_test else 300)
+    tune_mnist(num_training_iterations=5 if args.smoke_test else 300, gpu=args.gpu)
 
 # not complete we found erros in the end
 # ray.tune.error.TuneError: ('Trials did not complete', [train_mnist_8b005_00000, train_mnist_8b005_00001, train_mnist_8b005_00002, tr

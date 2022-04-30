@@ -187,11 +187,23 @@ class Cifar10Model(Trainable):
 
 
 if __name__ == "__main__":
+    import platform_util
+    ipv4, gpu, cpu = platform_util.check_platform()
+
     parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--gpu",
+        type=int,
+        default=gpu,
+    )
+    parser.add_argument(
+        "--cpu",
+        type=int,
+        default=cpu,
+    )
     parser.add_argument(
         "--smoke-test", action="store_true", help="Finish quickly for testing"
     )
-    ipv4 = os.popen('ip addr show eth0').read().split("inet ")[1].split("/")[0]
     parser.add_argument(
         "--server-address",
         type=str,
@@ -234,7 +246,7 @@ if __name__ == "__main__":
         Cifar10Model,
         name="pbt_cifar10",
         scheduler=pbt,
-        resources_per_trial={"cpu": 1, "gpu": 0},
+        resources_per_trial={"cpu": cpu, "gpu": gpu},
         stop={
             "mean_accuracy": 0.80,
             "training_iteration": 30,
