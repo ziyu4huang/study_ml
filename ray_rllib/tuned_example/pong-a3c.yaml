@@ -5,6 +5,8 @@
 pong-a3c:
     env: PongDeterministic-v4
     run: A3C
+    stop:
+        time_total_s: 600
     config:
         # Works for both torch and tf.
         framework: tf2

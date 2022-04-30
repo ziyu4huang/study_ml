@@ -34,7 +34,7 @@ if __name__ == "__main__":
     )
     args, _ = parser.parse_known_args()
 
-    if args.server_address == "auto"
+    if args.server_address == "auto":
         ray.init(address="auto", configure_logging=False)
     else:
         url = f"ray://{args.server_address}:{args.server_port}"

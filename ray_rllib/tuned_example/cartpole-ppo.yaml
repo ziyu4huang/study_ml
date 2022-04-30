@@ -1,0 +1,22 @@
+cartpole-ppo:
+    env: CartPole-v0
+    run: PPO
+    stop:
+        episode_reward_mean: 150
+        timesteps_total: 100000
+    config:
+        disable_env_checking: true
+        # Works for both torch and tf.
+        # https://github.com/ray-project/ray/blob/27917f570de3296ecf6c81fbe0cc318efd448b1b/rllib/tuned_examples/ppo/cartpole-ppo.yaml
+        num_gpus: 1
+        framework: tf
+        gamma: 0.99
+        lr: 0.0003
+        num_workers: 1
+        observation_filter: MeanStdFilter
+        num_sgd_iter: 6
+        vf_loss_coeff: 0.01
+        model:
+            fcnet_hiddens: [32]
+            fcnet_activation: linear
+            vf_share_layers: true
