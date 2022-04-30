@@ -1,5 +1,6 @@
 
 # https://github.com/ray-project/ray/blob/27917f570de3296ecf6c81fbe0cc318efd448b1b/rllib/tuned_examples/ppo/cartpole-ppo.yaml
+# this works on M1/GPU, TF2.8
 
 ip="192.168.72.106"
 #fixed
