@@ -5,7 +5,7 @@ autopep8
 ipykernel
 seaborn
 tensorboard
-ray[default,debug,rllib,tune,serve]
+ray[default,debug,rllib,tune,serve]==1.12.0
 # cannot ray[data] due to conflict numpy > 1.20
 gym[atari]
 gym[accept-rom-license]
