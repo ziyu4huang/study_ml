@@ -24,23 +24,26 @@ import ray
 from ray import tune
 from ray.rllib.agents.registry import get_trainer_class
 
+import platform_util
+ipv4, gpu, cpu = platform_util.check_platform()
+
 parser = argparse.ArgumentParser()
 parser.add_argument(
     "--run", type=str, default="PPO", help="The RLlib-registered algorithm to use."
 )
-parser.add_argument("--num-cpus", type=int, default=0)
-parser.add_argument("--num-gpus", type=int, default=0)
+parser.add_argument("--num-cpus", type=int, default=8)
+parser.add_argument("--num-gpus", type=int, default=1)
 parser.add_argument(
     "--framework",
     choices=["tf", "tf2", "tfe", "torch"],
-    default="tf",
+    default="tf2",
     help="The DL framework specifier.",
 )
 parser.add_argument("--eager-tracing", action="store_true")
 parser.add_argument(
     "--stop-iters",
     type=int,
-    default=200,
+    default=50,
     help="Number of iterations to train before we do inference.",
 )
 parser.add_argument(
@@ -68,19 +71,41 @@ parser.add_argument(
     help="Number of episodes to do inference over after training.",
 )
 
+parser.add_argument(
+    "--server-address",
+    type=str,
+    default=ipv4,
+    required=False,
+    help="The address of server to connect to if using Ray Client.",
+)
+parser.add_argument(
+    "--server-port",
+    type=str,
+    default=10001,
+)
+
 if __name__ == "__main__":
     args = parser.parse_args()
 
-    ray.init(num_cpus=args.num_cpus or None)
+    if args.server_address == "auto":
+        ray.init(address="auto", configure_logging=False)
+        #ray.init(num_cpus=args.num_cpus or None)
+    else:
+        url = f"ray://{args.server_address}:{args.server_port}"
+        print("Connect to url: ", url)
+        ray.init(url)
 
     config = {
         "env": "FrozenLake-v1",
+        # Run with tracing enabled for tfe/tf2?
+        "eager_tracing": args.eager_tracing,
+        # enable True for tf2
+        # "eager_tracing": True, # for production purpose
+        # "disable_env_checking": True,
         # Use GPUs iff `RLLIB_NUM_GPUS` env var set to > 0.
         #"num_gpus": int(os.environ.get("RLLIB_NUM_GPUS", "0")),
         "num_gpus": args.num_gpus,
-        "framework": args.framework,
-        # Run with tracing enabled for tfe/tf2?
-        "eager_tracing": args.eager_tracing,
+        "framework": args.framework
     }
 
     stop = {
@@ -130,4 +155,11 @@ if __name__ == "__main__":
             num_episodes += 1
             episode_reward = 0.0
 
-    ray.shutdown()
+    if args.server_address == "auto":
+        # dont shutdown on server mode
+        ray.shutdown()
+
+
+    # Currently, on M1,  program stop at "EOF Error: Ran out of input"
+    # https://github.com/ray-project/ray/issues/2685
+

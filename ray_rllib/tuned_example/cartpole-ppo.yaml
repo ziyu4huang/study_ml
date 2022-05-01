@@ -2,6 +2,7 @@ cartpole-ppo:
     env: CartPole-v0
     run: PPO
     stop:
+        training_iteration: 7
         episode_reward_mean: 150
         timesteps_total: 100000
     config:
@@ -9,7 +10,7 @@ cartpole-ppo:
         # Works for both torch and tf.
         # https://github.com/ray-project/ray/blob/27917f570de3296ecf6c81fbe0cc318efd448b1b/rllib/tuned_examples/ppo/cartpole-ppo.yaml
         num_gpus: 1
-        framework: tf
+        framework: tf2
         gamma: 0.99
         lr: 0.0003
         num_workers: 4

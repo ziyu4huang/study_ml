@@ -1,7 +1,8 @@
 #
 # https://github.com/ray-project/ray/blob/master/rllib/examples/inference_and_serving/policy_inference_after_training.py
 #
-
+# Ok, this can successfuly runs on M1
+#
 # Import the RL algorithm (Trainer) we would like to use.
 from ray.rllib.agents.ppo import PPOTrainer
 
@@ -12,6 +13,7 @@ config = {
     # Use 2 environment workers (aka "rollout workers") that parallelly
     # collect samples from their own environment clone(s).
     "num_workers": 2,
+    "num_gpus": 1,
     # Change this to "framework: torch", if you are using PyTorch.
     # Also, use "framework: tf2" for tf2.x eager execution.
     "framework": "tf",
