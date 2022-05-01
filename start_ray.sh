@@ -21,11 +21,20 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 if [[ "$OSTYPE" == "linux"* ]]; then
+  #for TF1.0 DirectML WSL enviroment
+  # SEE https://docs.microsoft.com/zh-tw/windows/ai/directml/gpu-faq
   ip=$(ip addr show eth0 |grep inet | grep -Fv inet6  | awk '{print $2}' | cut -d '/' -f 1)
   # this is for WSL runs in AMD ryzen 3700X
   cpus=8
   # current WSL GPU only support DirectML
   gpus=1
+
+  #source /home/ziyu4huang/tf1dml/bin/activate
+  #export PATH=/home/ziyu4huang/tf1dml/bin:/usr/bin
+  # see DirectML control Variable 
+  # https://github.com/microsoft/tensorflow-directml/wiki/Environment-Variables
+  #export DML_VISIBLE_DEVICES=1
+  #export TF_CPP_MIN_LOG_LEVEL=2
 fi
 
 echo "--num-cpus $cpus --num-gpus $gpus "
