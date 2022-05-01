@@ -1,0 +1,20 @@
+#tensorflow-directml
+#matplotlib
+#jupyterlab
+#autopep8
+#ipykernel
+#seaborn
+#tensorboard
+#pyarrow
+#dask
+#  numpy<1.19.0,>=1.16.0 (from tensorflow-directml==1.15.5->-r requirements.in (line 1))
+# tf1 cannot use newer numpy
+#numpy==1.18.5
+#sklearn
+
+pytorch-directml
+ray[default,rllib,tune,serve]==1.12.0
+gym[atari]
+gym[accept-rom-license]
+atari_py
+
