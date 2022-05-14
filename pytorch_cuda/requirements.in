@@ -1,0 +1,52 @@
+#tensorflow-directml
+#matplotlib
+#jupyterlab
+#autopep8
+#ipykernel
+#seaborn
+#tensorboard
+#pyarrow
+#dask
+#  numpy<1.19.0,>=1.16.0 (from tensorflow-directml==1.15.5->-r requirements.in (line 1))
+# tf1 cannot use newer numpy
+#numpy==1.18.5
+#sklearn
+
+# pytorch --------
+torch==1.8.2+cu111
+torchvision==0.9.2+cu111
+torchaudio==0.8.2 
+
+ray[default,rllib,tune,serve]==1.12.0
+gym[atari]
+gym[accept-rom-license]
+atari_py
+
+# base ----------------------------------------
+matplotlib>=3.2.2
+numpy>=1.18.5
+opencv-python>=4.1.2
+Pillow
+PyYAML>=5.3.1
+scipy>=1.4.1
+tqdm>=4.41.0
+
+# logging -------------------------------------
+tensorboard>=2.4.1
+# wandb
+
+# plotting ------------------------------------
+seaborn>=0.11.0
+pandas
+
+# export --------------------------------------
+# coremltools>=4.1
+# onnx>=1.9.0
+# scikit-learn==0.19.2  # for coreml quantization
+
+# extras --------------------------------------
+# Cython  # for pycocotools https://github.com/cocodataset/cocoapi/issues/172
+pycocotools>=2.0  # COCO mAP
+thop  # FLOPS computation
+humanize
+ipywidgets
